@@ -6,17 +6,15 @@ def load_library(file_name)
   # code goes here
   file = YAML.load_file(file_name)
 
-  result = {}
-  result["get_meaning"] = {}
-  result["get_emoticon"] = {}
+  result = {"get_meaning" => {}, "get_emoticon" => {}}
+  
 
   file.each{ |english, emoticon|
     result["get_meaning"][emoticon[1]] = english
+    result["get_emoticon"][emoticon[0]] = emoticon[1]
+
   }
 
-  file.each{ |english, emoticon|
-    result["get_emoticon"][emoticon[0]] = emoticon[1]
-  }
 
   #binding.pry
   return result
